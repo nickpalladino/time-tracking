@@ -1,0 +1,102 @@
+[
+	{
+		"name": [
+			"Work"
+		],
+		"rule": {
+			"type": null
+		},
+		"id": 0
+	},
+	{
+		"name": [
+			"Work",
+			"Development"
+		],
+		"rule": {
+			"type": null
+		},
+		"id": 1
+	},
+	{
+		"name": [
+			"Work",
+			"Communications"
+		],
+		"rule": {
+			"type": "regex",
+			"regex": "Thunderbird|Slack|Zoom|Outlook"
+		},
+		"id": 2
+	},
+	{
+		"name": [
+			"Work",
+			"Reviews"
+		],
+		"rule": {
+			"type": "regex",
+			"regex": "Trello|Pull Request|Box"
+		},
+		"id": 3
+	},
+	{
+		"name": [
+			"Work",
+			"Development",
+			"Code"
+		],
+		"rule": {
+			"type": "regex",
+			"regex": "jetbrains-idea-ce|Code|Gnome-terminal"
+		},
+		"id": 4
+	},
+	{
+		"name": [
+			"Work",
+			"Development",
+			"Testing"
+		],
+		"rule": {
+			"type": "regex",
+			"regex": "Insomnia|.Test.java|Breeding Insight Platform"
+		},
+		"id": 5
+	},
+	{
+		"name": [
+			"Work",
+			"Development",
+			"Documentation"
+		],
+		"rule": {
+			"type": "regex",
+			"regex": "Swagger Editor|gedit|openapi.yaml|Hack MD"
+		},
+		"id": 6
+	},
+	{
+		"name": [
+			"Work",
+			"Development",
+			"Research"
+		],
+		"rule": {
+			"type": "regex",
+			"regex": "Stack Overflow|Google Search|Micronaut|API|Vue|BrAPI"
+		},
+		"id": 7
+	},
+	{
+		"name": [
+			"Work",
+			"Time Tracking"
+		],
+		"rule": {
+			"type": "regex",
+			"regex": "ActivityWatch"
+		},
+		"id": 8
+	}
+]
