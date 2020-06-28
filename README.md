@@ -1,6 +1,8 @@
 # time-tracking
 This repo contains configuration information and addon tools for time tracking with [ActivityWatch](https://activitywatch.net/) tailored for Breeding Insight.
 
+![Summary](images/summary.jpg?raw=true)
+
 ## Settings
 
 ![Settings](images/categorization.jpg?raw=true)
