@@ -12,3 +12,26 @@ The regex rules currently only support the application name or window title from
 ActivityWatch comes with two default watchers, [aw-watcher-window](https://github.com/ActivityWatch/aw-watcher-window) which monitors application name and window title and [aw-watcher-afk](https://github.com/ActivityWatch/aw-watcher-afk) which monitors mouse and keyboard activity to determine if the user is active.
 
 ActivityWatch also supports custom watchers that can give more event information for specific application types. For example, there is [aw-watcher-web](https://github.com/ActivityWatch/aw-watcher-web) which will give you url information of the browser. There is also a [aw-watcher-jetbrains](https://github.com/OlivierMary/aw-watcher-jetbrains) which will give more detailed IntelliJ editor information. Note that the information from these watchers would have to be accessed via the ActivityWatch API.
+
+## API
+
+ActivityWatch has an API and a custom query language. Using this, it should be possible to estimate time spent per Trello card by running a program at the end of the sprint.
+
+### Task Time Tracking Idea
+
+Each of our Trello cards has a unique id that is shown in the window title bar in the following cases:
+
+- Trello website
+- Github pull request page
+- Github branch page
+- IntelliJ project (can display git branch in title)
+
+Over the duration of a sprint, you will have worked with a number of cards whether implementing or reviewing. This known list would be one of the inputs to the program. For example for the last sprint:
+
+- ONT-49
+- PRO-53
+- INF-81
+- ONT-32
+- INF-163
+
+The program could go through the sprint days from start to finish looking for these identifiers. When it sees one say you opened trello to look at the requirements, it will start adding time under that task. This would include time that's hard to track otherwise such as research or testing. It would exclude communications time because a lot of the time will not be specific to the task being worked on due to general meetings, etc. When a different card identifier is seen in one of the window titles, time will switch to being added under that card. 
