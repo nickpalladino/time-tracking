@@ -39,3 +39,8 @@ Over the duration of a sprint, you will have worked with a number of cards wheth
 - INF-163
 
 The program could go through the sprint days from start to finish looking for these identifiers. When it sees one, say you opened trello to look at the requirements, it will start adding time under that task. This would include time that's hard to track otherwise such as research or testing. It would exclude communications time because a lot of the time will not be specific to the task being worked on due to general meetings, etc. When a different card identifier is seen in one of the window titles, time will switch to being added under that card. If one or more of the specified card identifiers are not found in the sprint analysis, an error message will be produced to indicate which were missing so that it can be fixed and time can be summed correctly.
+
+## Issues
+
+### Full screen (Zoom screen sharing) not tracking time
+Need to investigate and possibly open an issue in the [aw-watcher-window](https://github.com/ActivityWatch/aw-watcher-window) repo. Looks like time in a fullscreen screensharing zoom call is not being tracked.
