@@ -40,6 +40,14 @@ Over the duration of a sprint, you will have worked with a number of cards wheth
 
 The program could go through the sprint days from start to finish looking for these identifiers. When it sees one, say you opened trello to look at the requirements, it will start adding time under that task. This would include time that's hard to track otherwise such as research or testing. It would exclude communications time because a lot of the time will not be specific to the task being worked on due to general meetings, etc. When a different card identifier is seen in one of the window titles, time will switch to being added under that card. If one or more of the specified card identifiers are not found in the sprint analysis, an error message will be produced to indicate which were missing so that it can be fixed and time can be summed correctly.
 
+## Configuring applications to put git branch in window title
+
+To improve the accuracy of the automated task time tracking program, it is beneficial to have the git branch be identified in the title of as many windows as possible. The git branch is tied to the trello card for the task which allows us to calculate the time. Here are applications I have configured to show the current git branch in the window title bar.
+
+### IntelliJ
+
+Install the [Branch in Window Title](https://plugins.jetbrains.com/plugin/9675-branch-in-window-title) plugin to have the git branch displayed in the IntelliJ window title.
+
 ## Issues
 
 ### Full screen (Zoom screen sharing) not tracking time
