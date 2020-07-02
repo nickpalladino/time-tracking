@@ -29,6 +29,7 @@ Each of our Trello cards has a unique id that is shown in the window title bar i
 - Github pull request page
 - Github branch page
 - IntelliJ project (can display git branch in title)
+- Terminal (can display git branch in title)
 
 Over the duration of a sprint, you will have worked with a number of cards whether implementing or reviewing. This known list would be one of the inputs to the program. For example for the last sprint:
 
