@@ -3,3 +3,8 @@ micronaut:
     name: task-tracker
   server:
     port: 8085
+    cors:
+      enabled: true
+
+activity-watcher:
+  uri: "http://localhost:5600"
