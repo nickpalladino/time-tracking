@@ -9,6 +9,8 @@ import task.tracker.client.model.Event;
 
 import java.math.BigDecimal;
 import java.net.URL;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,13 +22,16 @@ public class AnalysisServiceTest {
     private List<Event> events;
     private AnalysisService service;
     private Set<String> tasks;
+    private Set<OffsetDateTime> days;
 
     @BeforeAll
     @SneakyThrows
     void setup() {
         client = new ActivityWatcherClient(new URL("http://localhost:5600"));
         // get some data to test with
-        events = client.getWindowActiveNotAfkEventsSortedByTimestamp();
+        days = new HashSet<>();
+        days.add(OffsetDateTime.parse("2020-06-29T04:15:30+04:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+        events = client.getWindowActiveNotAfkEventsSortedByTimestamp(days);
         service = new AnalysisService();
         // put in test tasks
         tasks = new HashSet<>();

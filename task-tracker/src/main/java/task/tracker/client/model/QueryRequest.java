@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.Singular;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,5 +19,5 @@ public class QueryRequest {
     private List<String> queryStatements;
     @Singular
     @JsonProperty("timeperiods")
-    private List<String> timePeriods;
+    private Set<String> timePeriods;
 }

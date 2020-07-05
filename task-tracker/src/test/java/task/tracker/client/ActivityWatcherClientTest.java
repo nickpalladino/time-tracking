@@ -6,7 +6,11 @@ import task.tracker.client.model.Bucket;
 import task.tracker.client.model.Event;
 
 import java.net.URL;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,7 +36,10 @@ public class ActivityWatcherClientTest {
     @Test
     void getWindowActiveNotAfkEventsSortedByTimestampTest() {
 
-        List<Event> events = client.getWindowActiveNotAfkEventsSortedByTimestamp();
+        Set<OffsetDateTime> days = new HashSet<>();
+        days.add(OffsetDateTime.parse("2020-06-29T04:15:30+04:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+
+        List<Event> events = client.getWindowActiveNotAfkEventsSortedByTimestamp(days);
 
         assertEquals(true, events.size() > 0, "Expected events");
     }

@@ -3,6 +3,7 @@ package task.tracker.service;
 import lombok.NonNull;
 import task.tracker.client.ActivityWatcherClient;
 import task.tracker.client.model.Event;
+import task.tracker.model.request.AnalysisRequest;
 
 import javax.inject.Singleton;
 import java.math.BigDecimal;
@@ -24,10 +25,13 @@ public class AnalysisService {
     }
 
 
-    public Map<String, BigDecimal> analyze(@NonNull Set<String> taskNames) {
-        List<Event> events = client.getWindowActiveNotAfkEventsSortedByTimestamp();
-        return calculateTaskTimes(events, taskNames);
+    public Map<String, BigDecimal> analyze(@NonNull AnalysisRequest request) {
+
+        List<Event> events = client.getWindowActiveNotAfkEventsSortedByTimestamp(request.getDays());
+        return calculateTaskTimes(events, request.getTaskNames());
     }
+
+
 
 
     public Map<String, BigDecimal> calculateTaskTimes(List<Event> events, Set<String> taskNames) {
@@ -51,6 +55,8 @@ public class AnalysisService {
 
         return taskTimes;
     }
+
+
 
 
 }

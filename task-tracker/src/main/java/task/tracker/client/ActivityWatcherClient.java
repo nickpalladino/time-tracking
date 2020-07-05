@@ -12,6 +12,8 @@ import task.tracker.client.model.Event;
 import task.tracker.client.model.QueryRequest;
 
 import java.net.URL;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -53,7 +55,13 @@ public class ActivityWatcherClient {
      *
      * TODO: pass timeperiods in instead of hardcoding
      */
-    public List<Event> getWindowActiveNotAfkEventsSortedByTimestamp() {
+    public List<Event> getWindowActiveNotAfkEventsSortedByTimestamp(Set<OffsetDateTime> timePeriods) {
+
+        // convert to activity watch timeperiod format, do per day
+        Set<String> dayRanges = timePeriods.stream()
+                .map(day -> day.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME) + "/" +
+                            day.plusDays(1).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+                .collect(Collectors.toSet());
 
         QueryRequest request = QueryRequest.builder()
                 .queryStatement("window_events = query_bucket(find_bucket(\"aw-watcher-window_\"));")
@@ -61,8 +69,7 @@ public class ActivityWatcherClient {
                 .queryStatement("window_events_active = filter_period_intersect(window_events, filter_keyvals(afk_events, \"status\", [\"not-afk\"]));")
                 .queryStatement("events = sort_by_timestamp(window_events_active);")
                 .queryStatement("RETURN = events;")
-                .timePeriod("2020-06-29T04:00:00+02:00/2020-06-30T04:00:00+02:00")
-                .timePeriod("2020-06-30T00:00:00+02:00/2020-07-01T00:00:00+02:00")
+                .timePeriods(dayRanges)
                 .build();
 
         Flowable<HttpResponse<List<List<LinkedHashMap>>>> call = client.exchange(
