@@ -12,6 +12,14 @@
       is-inline
     />
     </center>
+    <h3>Completed task list:</h3>
+    <p/>
+    <button v-on:click="submitAnalysis">Submit Analysis</button>
+    <template v-if="errors && errors.length">
+      <p style="color:red;" v-for="error of errors" v-bind:key="error">
+        {{error.response.data.message}}
+      </p>
+    </template>
 
 
   </div>
@@ -19,7 +27,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import {Calendar, DatePicker} from 'v-calendar';
+import { Calendar, DatePicker } from 'v-calendar';
+import axios from 'axios';
 
 @Component({
   components: {
@@ -28,23 +37,23 @@ import {Calendar, DatePicker} from 'v-calendar';
 })
 export default class AnalysisConfiguration extends Vue {
   dates: Array<Date> = [];
+  taskNames: Array<string> = ["INF-163", "INF-164"];
+
+  errors: any[] = [];
+  analysisResult: any;
+  
+
+  submitAnalysis() {
+    this.errors = [];
+    const body = {'taskNames': this.taskNames, 'days': this.dates };
+    axios.post(`http://localhost:8085/v1/analysis`, body)
+    .then(response => {
+      this.analysisResult = response.data
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+  }
+
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
