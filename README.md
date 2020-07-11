@@ -51,5 +51,8 @@ Install the [Branch in Window Title](https://plugins.jetbrains.com/plugin/9675-b
 
 ## Issues
 
+### Zoom meetings idle not tracked
+While this could be done, the filtering currently excludes away from keyboard which happens frequently in zoom meetings because you typically don't use the mouse or keyboard much.
+
 ### Full screen (Zoom screen sharing) not tracking time
-Need to investigate and possibly open an issue in the [aw-watcher-window](https://github.com/ActivityWatch/aw-watcher-window) repo. Looks like time in a fullscreen screensharing zoom call is not being tracked.
+Need to investigate and possibly open an issue in the [aw-watcher-window](https://github.com/ActivityWatch/aw-watcher-window) repo. Looks like time in a fullscreen screensharing zoom call is not being tracked. Might also be related to previous issue.
